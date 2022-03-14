@@ -11,33 +11,34 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
-import seedu.address.model.person.Person;
+import seedu.address.model.show.Show;
 
 /**
  * Represents the in-memory model of the address book data.
  */
 public class ModelManager implements Model {
+
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
-    private final AddressBook addressBook;
+    private final ShowList showList;
     private final UserPrefs userPrefs;
-    private final FilteredList<Person> filteredPersons;
+    private final FilteredList<Show> filteredShows;
 
     /**
-     * Initializes a ModelManager with the given addressBook and userPrefs.
+     * Initializes a ModelManager with the given showList and userPrefs.
      */
-    public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs) {
-        requireAllNonNull(addressBook, userPrefs);
+    public ModelManager(ReadOnlyShowList showList, ReadOnlyUserPrefs userPrefs) {
+        requireAllNonNull(showList, userPrefs);
 
-        logger.fine("Initializing with address book: " + addressBook + " and user prefs " + userPrefs);
+        logger.fine("Initializing with address book: " + showList + " and user prefs " + userPrefs);
 
-        this.addressBook = new AddressBook(addressBook);
+        this.showList = new ShowList(showList);
         this.userPrefs = new UserPrefs(userPrefs);
-        filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
+        filteredShows = new FilteredList<>(this.showList.getShowList());
     }
 
     public ModelManager() {
-        this(new AddressBook(), new UserPrefs());
+        this(new ShowList(), new UserPrefs());
     }
 
     //=========== UserPrefs ==================================================================================
@@ -65,67 +66,67 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public Path getAddressBookFilePath() {
-        return userPrefs.getAddressBookFilePath();
+    public Path getShowListFilePath() {
+        return userPrefs.getShowListFilePath();
     }
 
     @Override
-    public void setAddressBookFilePath(Path addressBookFilePath) {
-        requireNonNull(addressBookFilePath);
-        userPrefs.setAddressBookFilePath(addressBookFilePath);
+    public void setShowListFilePath(Path showListFilePath) {
+        requireNonNull(showListFilePath);
+        userPrefs.setShowListFilePath(showListFilePath);
     }
 
-    //=========== AddressBook ================================================================================
+    //=========== ShowList ================================================================================
 
     @Override
-    public void setAddressBook(ReadOnlyAddressBook addressBook) {
-        this.addressBook.resetData(addressBook);
-    }
-
-    @Override
-    public ReadOnlyAddressBook getAddressBook() {
-        return addressBook;
+    public void setShowList(ReadOnlyShowList showList) {
+        this.showList.resetData(showList);
     }
 
     @Override
-    public boolean hasPerson(Person person) {
+    public ReadOnlyShowList getShowList() {
+        return showList;
+    }
+
+    @Override
+    public boolean hasShow(Show person) {
         requireNonNull(person);
-        return addressBook.hasPerson(person);
+        return showList.hasShow(person);
     }
 
     @Override
-    public void deletePerson(Person target) {
-        addressBook.removePerson(target);
+    public void deleteShow(Show target) {
+        showList.removeShow(target);
     }
 
     @Override
-    public void addPerson(Person person) {
-        addressBook.addPerson(person);
-        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+    public void addShow(Show person) {
+        showList.addShow(person);
+        updateFilteredShowList(PREDICATE_SHOW_ALL_SHOWS);
     }
 
     @Override
-    public void setPerson(Person target, Person editedPerson) {
-        requireAllNonNull(target, editedPerson);
+    public void setShow(Show target, Show editedShow) {
+        requireAllNonNull(target, editedShow);
 
-        addressBook.setPerson(target, editedPerson);
+        showList.setShow(target, editedShow);
     }
 
-    //=========== Filtered Person List Accessors =============================================================
+    //=========== Filtered Show List Accessors =============================================================
 
     /**
-     * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
-     * {@code versionedAddressBook}
+     * Returns an unmodifiable view of the list of {@code Show} backed by the internal list of
+     * {@code versionedShowList}
      */
     @Override
-    public ObservableList<Person> getFilteredPersonList() {
-        return filteredPersons;
+    public ObservableList<Show> getFilteredShowList() {
+        return filteredShows;
     }
 
     @Override
-    public void updateFilteredPersonList(Predicate<Person> predicate) {
+    public void updateFilteredShowList(Predicate<Show> predicate) {
         requireNonNull(predicate);
-        filteredPersons.setPredicate(predicate);
+        filteredShows.setPredicate(predicate);
     }
 
     @Override
@@ -142,9 +143,8 @@ public class ModelManager implements Model {
 
         // state check
         ModelManager other = (ModelManager) obj;
-        return addressBook.equals(other.addressBook)
+        return showList.equals(other.showList)
                 && userPrefs.equals(other.userPrefs)
-                && filteredPersons.equals(other.filteredPersons);
+                && filteredShows.equals(other.filteredShows);
     }
-
 }

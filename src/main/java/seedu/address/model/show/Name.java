@@ -1,12 +1,8 @@
-package seedu.address.model.person;
+package seedu.address.model.show;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
-/**
- * Represents a Person's name in the address book.
- * Guarantees: immutable; is valid as declared in {@link #isValidName(String)}
- */
 public class Name {
 
     public static final String MESSAGE_CONSTRAINTS =
@@ -47,8 +43,8 @@ public class Name {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof Name // instanceof handles nulls
-                && fullName.equals(((Name) other).fullName)); // state check
+                || (other instanceof seedu.address.model.show.Name // instanceof handles nulls
+                && fullName.equals(((seedu.address.model.show.Name) other).fullName)); // state check
     }
 
     @Override
@@ -57,3 +53,4 @@ public class Name {
     }
 
 }
+

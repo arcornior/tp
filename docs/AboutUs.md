@@ -9,51 +9,57 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ## Project team
 
-### John Doe
+### Jonathan Yeo
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/jonathanhoshi.png" width="200px">
 
-[[homepage](http://www.comp.nus.edu.sg/~damithch)]
-[[github](https://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[<img src="images/github-icon.png" width="50px">](http://github.com/jonathanhoshi) &nbsp; &nbsp; &nbsp;
+[<img src="images/portfolio-icon.png" width="50px">](team/jonathanhoshi.md)
 
-* Role: Project Advisor
+|   Role    | Responsibilities   |
+|:---------:|:-------------------|
+| Developer | Team Lead <br/> UI |
 
-### Jane Doe
+### Ang Wei Jun
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/aweijun.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[<img src="images/github-icon.png" width="50px">](https://github.com/aweijun) &nbsp; &nbsp; &nbsp;
+[<img src="images/portfolio-icon.png" width="50px">](team/aweijun.md)
 
-* Role: Team Lead
-* Responsibilities: UI
+|   Role    | Responsibilities |
+|:---------:|:-----------------|
+| Developer | Integration      |
 
-### Johnny Doe
+### Low Kaiwei
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/lowkaiwei98.png" width="200px">
 
-[[github](http://github.com/johndoe)] [[portfolio](team/johndoe.md)]
+[<img src="images/github-icon.png" width="50px">](http://github.com/lowkaiwei98) &nbsp; &nbsp; &nbsp;
+[<img src="images/portfolio-icon.png" width="50px">](team/lowkaiwei98.md)
 
-* Role: Developer
-* Responsibilities: Data
+|   Role    | Responsibilities |
+|:---------:|:-----------------|
+| Developer | Code Quality     |
 
-### Jean Doe
+### Lim Shao Cong
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/arcornior.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[<img src="images/github-icon.png" width="50px">](http://github.com/arcornior) &nbsp; &nbsp; &nbsp;
+[<img src="images/portfolio-icon.png" width="50px">](team/arcornior.md)
 
-* Role: Developer
-* Responsibilities: Dev Ops + Threading
+|   Role    | Responsibilities |
+|:---------:|:-----------------|
+| Developer | Documentation    |
 
-### James Doe
+### Zachary Chan
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/ardentsoul.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[<img src="images/github-icon.png" width="50px">](https://github.com/Ardentsoul) &nbsp; &nbsp; &nbsp;
+[<img src="images/portfolio-icon.png" width="50px">](team/ardentsoul.md)
 
-* Role: Developer
-* Responsibilities: UI
+|   Role    | Responsibilities               |
+|:---------:|:-------------------------------|
+| Developer | Quality Assurance              |
