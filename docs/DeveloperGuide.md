@@ -714,4 +714,8 @@ testers are expected to do more *exploratory* testing.
 
       E.g. `shutter` from the name field will be matched.
    
+   9. Test case: `find t/Action Anime`
+
+      Expected: No show is found. Error details shown in the result display, with a result message saying `Invalid command format!...`
+   
 [return to top <img src="images/toc-icon.png" width="25px">](#table-of-contents)

@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import seedu.trackermon.logic.commands.EditCommand.EditShowDescriptor;
+import seedu.trackermon.model.show.Comment;
 import seedu.trackermon.model.show.Name;
 import seedu.trackermon.model.show.Show;
 import seedu.trackermon.model.show.Status;
@@ -34,6 +35,7 @@ public class EditShowDescriptorBuilder {
         descriptor.setName(show.getName());
         descriptor.setStatus(show.getStatus());
         descriptor.setTags(show.getTags());
+        descriptor.setComment(show.getComment());
     }
 
     /**
@@ -60,6 +62,15 @@ public class EditShowDescriptorBuilder {
     public EditShowDescriptorBuilder withTags(String... tags) {
         Set<Tag> tagSet = Stream.of(tags).map(Tag::new).collect(Collectors.toSet());
         descriptor.setTags(tagSet);
+        return this;
+    }
+
+    /**
+     * Parses the {@code comment} into a {@code Comment} and set it to the {@code EditShowDescriptor}
+     * that we are building.
+     */
+    public EditShowDescriptorBuilder withComment(String comment) {
+        descriptor.setComment(new Comment(comment));
         return this;
     }
 

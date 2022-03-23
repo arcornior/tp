@@ -1,6 +1,7 @@
 package seedu.trackermon.logic.parser;
 
 import static seedu.trackermon.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.trackermon.logic.commands.CommandTestUtil.COMMENT_DESC_BAD;
 import static seedu.trackermon.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
 import static seedu.trackermon.logic.commands.CommandTestUtil.INVALID_STATUS_DESC;
 import static seedu.trackermon.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
@@ -11,6 +12,7 @@ import static seedu.trackermon.logic.commands.CommandTestUtil.STATUS_DESC_WATCHI
 import static seedu.trackermon.logic.commands.CommandTestUtil.TAG_DESC_HENTAI;
 import static seedu.trackermon.logic.commands.CommandTestUtil.TAG_DESC_MOVIE;
 import static seedu.trackermon.logic.commands.CommandTestUtil.TAG_DESC_YURI;
+import static seedu.trackermon.logic.commands.CommandTestUtil.VALID_COMMENT_BAD;
 import static seedu.trackermon.logic.commands.CommandTestUtil.VALID_NAME_ALICE_IN_WONDERLAND;
 import static seedu.trackermon.logic.commands.CommandTestUtil.VALID_NAME_GONE;
 import static seedu.trackermon.logic.commands.CommandTestUtil.VALID_STATUS_COMPLETED;
@@ -99,11 +101,12 @@ public class EditCommandParserTest {
     public void parse_allFieldsSpecified_success() {
         Index targetIndex = INDEX_SECOND_SHOW;
         String userInput = targetIndex.getOneBased() + NAME_DESC_ALICE_IN_WONDERLAND
-                + STATUS_DESC_COMPLETED + TAG_DESC_MOVIE
+                + STATUS_DESC_COMPLETED + COMMENT_DESC_BAD + TAG_DESC_MOVIE
                 + TAG_DESC_HENTAI;
 
         EditShowDescriptor descriptor = new EditShowDescriptorBuilder().withName(VALID_NAME_ALICE_IN_WONDERLAND)
-                .withStatus(VALID_STATUS_COMPLETED).withTags(VALID_TAG_MOVIE, VALID_TAG_HENTAI).build();
+                .withStatus(VALID_STATUS_COMPLETED).withComment(VALID_COMMENT_BAD)
+                .withTags(VALID_TAG_MOVIE, VALID_TAG_HENTAI).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
         assertParseSuccess(parser, userInput, expectedCommand);

@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.trackermon.commons.exceptions.IllegalValueException;
+import seedu.trackermon.model.show.Comment;
 import seedu.trackermon.model.show.Name;
 import seedu.trackermon.model.show.Show;
 import seedu.trackermon.model.show.Status;
@@ -25,18 +26,21 @@ class JsonAdaptedShow {
     private final String name;
     private final String status;
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
+    private final String comment;
 
     /**
      * Constructs a {@code JsonAdaptedPerson} with the given person details.
      */
     @JsonCreator
     public JsonAdaptedShow(@JsonProperty("name") String name, @JsonProperty("status") String status,
-                             @JsonProperty("tagged") List<JsonAdaptedTag> tagged) {
+                             @JsonProperty("tagged") List<JsonAdaptedTag> tagged,
+                                @JsonProperty("comment") String comment) {
         this.name = name;
         this.status = status;
         if (tagged != null) {
             this.tagged.addAll(tagged);
         }
+        this.comment = comment;
     }
 
     /**
@@ -48,6 +52,7 @@ class JsonAdaptedShow {
         tagged.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
+        comment = source.getComment().comment;
     }
 
     /**
@@ -77,8 +82,11 @@ class JsonAdaptedShow {
         }
         final Status modelStatus = Status.valueOf(status.toUpperCase());
 
+        final Comment modelComment = new Comment(comment);
+
         final Set<Tag> modelTags = new HashSet<>(showTags);
-        return new Show(modelName, modelStatus, modelTags);
+
+        return new Show(modelName, modelStatus, modelTags, modelComment);
     }
 
 }

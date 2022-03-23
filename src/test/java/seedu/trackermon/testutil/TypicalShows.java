@@ -1,5 +1,7 @@
 package seedu.trackermon.testutil;
 
+import static seedu.trackermon.logic.commands.CommandTestUtil.VALID_COMMENT_BAD;
+import static seedu.trackermon.logic.commands.CommandTestUtil.VALID_COMMENT_GOOD;
 import static seedu.trackermon.logic.commands.CommandTestUtil.VALID_NAME_HANCOCK;
 import static seedu.trackermon.logic.commands.CommandTestUtil.VALID_NAME_WEATHERING_WITH_YOU;
 import static seedu.trackermon.logic.commands.CommandTestUtil.VALID_STATUS_COMPLETED;
@@ -17,20 +19,20 @@ import seedu.trackermon.model.show.Show;
 
 public class TypicalShows {
     public static final Show ALICE_IN_WONDERLAND = new ShowBuilder().withName("Alice in WonderLand")
-            .withStatus("completed").withTags("movie").build();
+            .withStatus("completed").withTags("movie").withComment("bad").build();
     public static final Show GONE = new ShowBuilder().withName("gone")
-            .withStatus("watching").withTags("Horror", "friends").build();
+            .withStatus("watching").withTags().withComment("bad").build();
     public static final Show FRIENDS = new ShowBuilder().withName("friends")
-            .withStatus("watching").withTags("Horror", "friends").build();
+            .withStatus("watching").withTags("Horror", "friends").withComment("good").build();
     public static final Show HIMYM = new ShowBuilder().withName("HIMYM")
-            .withStatus("watching").withTags("Horror", "friends").build();
+            .withStatus("watching").withTags("Horror", "friends").withComment("good").build();
 
     // Manually added - Show's details found in {@code CommandTestUtil}
     public static final Show WEATHERING_WITH_YOU = new ShowBuilder().withName(VALID_NAME_WEATHERING_WITH_YOU)
-            .withStatus(VALID_STATUS_COMPLETED).withTags(VALID_TAG_MOVIE).build();
+            .withStatus(VALID_STATUS_COMPLETED).withTags(VALID_TAG_MOVIE).withComment(VALID_COMMENT_BAD).build();
 
     public static final Show HANCOCK = new ShowBuilder().withName(VALID_NAME_HANCOCK).withStatus(VALID_STATUS_WATCHING)
-            .withTags(VALID_TAG_MOVIE, VALID_TAG_SERIES).build();
+            .withTags(VALID_TAG_MOVIE, VALID_TAG_SERIES).withComment(VALID_COMMENT_GOOD).build();
 
     private TypicalShows() {} // prevents instantiation
 

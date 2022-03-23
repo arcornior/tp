@@ -18,8 +18,12 @@ public class FindCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all shows whose names contain any of "
             + "the specified keywords (case-insensitive) and displays them as a list with index numbers.\n"
-            + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
-            + "Example: " + COMMAND_WORD + " hero kyojin academia";
+            + "At least one parameter must be stated in the find command.\n"
+            + "Parameters: [NAME] [STATUS] [TAG]\n"
+            + "Example: " + COMMAND_WORD + " hero kyojin academia OR "
+            + COMMAND_WORD + " n/hero kyojin academia s/completed t/Action";
+    public static final String TAG_ERROR = "Tag parameter must only be a single word.\n"
+            + "Example: " + COMMAND_WORD + " t/Action";
 
     private final Predicate<Show> predicate;
 

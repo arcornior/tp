@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.trackermon.logic.commands.CommandTestUtil.DESC_ALICE_IN_WONDERLAND;
 import static seedu.trackermon.logic.commands.CommandTestUtil.DESC_GONE;
+import static seedu.trackermon.logic.commands.CommandTestUtil.VALID_COMMENT_BAD;
 import static seedu.trackermon.logic.commands.CommandTestUtil.VALID_NAME_ALICE_IN_WONDERLAND;
 import static seedu.trackermon.logic.commands.CommandTestUtil.VALID_NAME_GONE;
 import static seedu.trackermon.logic.commands.CommandTestUtil.VALID_NAME_WEATHERING_WITH_YOU;
@@ -57,10 +58,10 @@ public class EditCommandTest {
 
         ShowBuilder showInList = new ShowBuilder(lastShow);
         Show editedShow = showInList.withName(VALID_NAME_WEATHERING_WITH_YOU).withStatus(VALID_STATUS_WATCHING)
-                .withTags(VALID_TAG_SERIES).build();
+                .withTags(VALID_TAG_SERIES).withComment(VALID_COMMENT_BAD).build();
 
         EditShowDescriptor descriptor = new EditShowDescriptorBuilder().withName(VALID_NAME_WEATHERING_WITH_YOU)
-                .withStatus(VALID_STATUS_WATCHING).withTags(VALID_TAG_SERIES).build();
+                .withStatus(VALID_STATUS_WATCHING).withTags(VALID_TAG_SERIES).withComment(VALID_COMMENT_BAD).build();
         EditCommand editCommand = new EditCommand(indexLastShow, descriptor);
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_SHOW_SUCCESS, editedShow);

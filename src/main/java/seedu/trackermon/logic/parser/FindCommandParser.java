@@ -17,6 +17,7 @@ import seedu.trackermon.model.show.Show;
 import seedu.trackermon.model.show.ShowContainsKeywordsPredicate;
 import seedu.trackermon.model.show.StatusContainsKeywordsPredicate;
 import seedu.trackermon.model.show.TagsContainsKeywordsPredicate;
+import seedu.trackermon.model.tag.Tag;
 
 /**
  * Parses input arguments and creates a new FindCommand object
@@ -61,6 +62,9 @@ public class FindCommandParser implements Parser<FindCommand> {
             hasPrefix = true;
             List<String> input = argumentMultimap.getAllValues(PREFIX_TAG);
             for (int i = 0; i < input.size(); i++) {
+                if (!Tag.isValidTagName(input.get(i))) {
+                    throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.TAG_ERROR));
+                }
                 predicateArrayList.add(new TagsContainsKeywordsPredicate(Arrays.asList(input.get(i))));
             }
         }

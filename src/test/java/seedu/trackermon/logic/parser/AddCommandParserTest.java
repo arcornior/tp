@@ -1,6 +1,7 @@
 package seedu.trackermon.logic.parser;
 
 import static seedu.trackermon.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.trackermon.logic.commands.CommandTestUtil.COMMENT_DESC_BAD;
 import static seedu.trackermon.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
 import static seedu.trackermon.logic.commands.CommandTestUtil.INVALID_STATUS_DESC;
 import static seedu.trackermon.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
@@ -13,6 +14,7 @@ import static seedu.trackermon.logic.commands.CommandTestUtil.STATUS_DESC_WATCHI
 import static seedu.trackermon.logic.commands.CommandTestUtil.TAG_DESC_HENTAI;
 import static seedu.trackermon.logic.commands.CommandTestUtil.TAG_DESC_MOVIE;
 import static seedu.trackermon.logic.commands.CommandTestUtil.TAG_DESC_YURI;
+import static seedu.trackermon.logic.commands.CommandTestUtil.VALID_COMMENT_BAD;
 import static seedu.trackermon.logic.commands.CommandTestUtil.VALID_NAME_ALICE_IN_WONDERLAND;
 import static seedu.trackermon.logic.commands.CommandTestUtil.VALID_STATUS_COMPLETED;
 import static seedu.trackermon.logic.commands.CommandTestUtil.VALID_TAG_HENTAI;
@@ -37,31 +39,31 @@ public class AddCommandParserTest {
 
     @Test
     public void parse_allFieldsPresent_success() {
-        Show expectedShow = new ShowBuilder(ALICE_IN_WONDERLAND).withTags(VALID_TAG_MOVIE).build();
+        Show expectedShow = new ShowBuilder(ALICE_IN_WONDERLAND).withTags(VALID_TAG_MOVIE)
+                .withComment(VALID_COMMENT_BAD).build();
 
         // whitespace only preamble
         assertParseSuccess(parser, PREAMBLE_WHITESPACE + NAME_DESC_ALICE_IN_WONDERLAND
-                + STATUS_DESC_COMPLETED + TAG_DESC_MOVIE, new AddCommand(expectedShow));
-
+                + STATUS_DESC_COMPLETED + COMMENT_DESC_BAD + TAG_DESC_MOVIE, new AddCommand(expectedShow));
         // multiple names - last name accepted
         assertParseSuccess(parser, NAME_DESC_GONE + NAME_DESC_ALICE_IN_WONDERLAND
-                + STATUS_DESC_COMPLETED + TAG_DESC_MOVIE, new AddCommand(expectedShow));
+                + STATUS_DESC_COMPLETED + COMMENT_DESC_BAD + TAG_DESC_MOVIE, new AddCommand(expectedShow));
 
         // multiple status - last status accepted
         assertParseSuccess(parser, NAME_DESC_ALICE_IN_WONDERLAND + STATUS_DESC_WATCHING
-                + STATUS_DESC_COMPLETED + TAG_DESC_MOVIE, new AddCommand(expectedShow));
+                + STATUS_DESC_COMPLETED + COMMENT_DESC_BAD + TAG_DESC_MOVIE, new AddCommand(expectedShow));
 
         // multiple tags - all accepted
-        Show expectedShowMultipleTags = new ShowBuilder(GONE).withTags(VALID_TAG_YURI, VALID_TAG_HENTAI)
-                .build();
-        assertParseSuccess(parser, NAME_DESC_GONE + STATUS_DESC_WATCHING + TAG_DESC_YURI
-                + TAG_DESC_HENTAI, new AddCommand(expectedShowMultipleTags));
+        Show expectedShowMultipleTags = new ShowBuilder(GONE).withComment(VALID_COMMENT_BAD)
+                .withTags(VALID_TAG_YURI, VALID_TAG_HENTAI).build();
+
+        assertParseSuccess(parser, NAME_DESC_GONE + STATUS_DESC_WATCHING + COMMENT_DESC_BAD
+                + TAG_DESC_YURI + TAG_DESC_HENTAI, new AddCommand(expectedShowMultipleTags));
     }
 
     @Test
     public void parse_optionalFieldsMissing_success() {
-        // zero tags
-        Show expectedShow = new ShowBuilder(ALICE_IN_WONDERLAND).withTags().build();
+        Show expectedShow = new ShowBuilder(ALICE_IN_WONDERLAND).withTags().withComment().build();
         assertParseSuccess(parser, NAME_DESC_ALICE_IN_WONDERLAND + STATUS_DESC_COMPLETED,
                 new AddCommand(expectedShow));
     }
