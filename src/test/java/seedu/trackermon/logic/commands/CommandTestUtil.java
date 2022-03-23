@@ -2,6 +2,7 @@ package seedu.trackermon.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.trackermon.logic.parser.CliSyntax.PREFIX_COMMENT;
 import static seedu.trackermon.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.trackermon.logic.parser.CliSyntax.PREFIX_STATUS;
 import static seedu.trackermon.logic.parser.CliSyntax.PREFIX_TAG;
@@ -41,7 +42,10 @@ public class CommandTestUtil {
     public static final String VALID_TAG_SERIES = "series";
     public static final String VALID_TAG_YURI = "yuri";
     public static final String VALID_TAG_HENTAI = "hentai";
-
+    public static final String VALID_COMMENT_GOOD = "good";
+    public static final String VALID_COMMENT_BAD = "bad";
+    public static final String COMMENT_DESC_GOOD = " " + PREFIX_COMMENT + VALID_COMMENT_GOOD;
+    public static final String COMMENT_DESC_BAD = " " + PREFIX_COMMENT + VALID_COMMENT_BAD;
     public static final String NAME_DESC_ALICE_IN_WONDERLAND = " " + PREFIX_NAME + VALID_NAME_ALICE_IN_WONDERLAND;
     public static final String NAME_DESC_GONE = " " + PREFIX_NAME + VALID_NAME_GONE;
     public static final String STATUS_DESC_COMPLETED = " " + PREFIX_STATUS + VALID_STATUS_COMPLETED;
@@ -60,9 +64,10 @@ public class CommandTestUtil {
 
     static {
         DESC_ALICE_IN_WONDERLAND = new EditShowDescriptorBuilder().withName(VALID_NAME_ALICE_IN_WONDERLAND)
-                .withStatus(VALID_STATUS_COMPLETED).withTags(VALID_TAG_MOVIE).build();
+                .withStatus(VALID_STATUS_COMPLETED).withTags(VALID_TAG_MOVIE).withComment(VALID_COMMENT_BAD).build();
         DESC_GONE = new EditShowDescriptorBuilder().withName(VALID_NAME_GONE)
-                .withStatus(VALID_STATUS_WATCHING).withTags(VALID_TAG_SERIES, VALID_TAG_HENTAI).build();
+                .withStatus(VALID_STATUS_WATCHING).withTags(VALID_TAG_SERIES, VALID_TAG_HENTAI)
+                .withComment(VALID_COMMENT_BAD).build();
     }
 
     /**

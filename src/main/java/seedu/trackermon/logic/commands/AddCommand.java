@@ -1,6 +1,7 @@
 package seedu.trackermon.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.trackermon.logic.parser.CliSyntax.PREFIX_COMMENT;
 import static seedu.trackermon.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.trackermon.logic.parser.CliSyntax.PREFIX_STATUS;
 import static seedu.trackermon.logic.parser.CliSyntax.PREFIX_TAG;
@@ -24,6 +25,7 @@ public class AddCommand extends Command {
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_NAME + "Boku no Hero "
             + PREFIX_STATUS + "completed "
+            + PREFIX_COMMENT + "This is about kids fighting "
             + PREFIX_TAG + "Anime "
             + PREFIX_TAG + "Action";
 
