@@ -440,15 +440,15 @@ To sort your show list by rating ascendingly, you can key in `sort r/asc`! For m
 | tag        | t/asc           | t/dsc            | Tag is sorted by number of tags |
 
 <div markdown="block" class="alert alert-warning">
-:exclamation: **Take note:** The order of how you type the prefixes does not affect the outcome! If you type `sort s/asc n/asc`, Trackermon will still sort by name in ascending order then by status in ascending order. By default, Trackermon prioritises sorting in the following order if the criteria are used: 
+:bulb: **Tip:** The order of how you type the prefixes does not affect the outcome! If you type `sort s/asc n/asc`, Trackermon will still sort by name in ascending order then by status in ascending order. By default, Trackermon prioritises sorting in the following order if the criteria are used: 
 
 * `name` > `status` > `rating` > `tag`
 </div>
 
 To sort by status in ascending order, then by name in ascending order, use `sort n/asc s/asc so/statusname`.
 
-<div markdown="block" class="alert alert-warning">
-:exclamation: **Take note:** When using `so/` prefix, Trackermon will check if all the prefixes used are present in your `SEQUENCE`. If they aren't, an error message will be displayed!
+<div markdown="block" class="alert alert-danger">
+:exclamation: **Caution:** When using `so/` prefix, Trackermon will check if all the prefixes used are present in your `SEQUENCE`. If they aren't, an error message will be displayed!
 </div>
 
 <div style="page-break-after: always;"></div>
